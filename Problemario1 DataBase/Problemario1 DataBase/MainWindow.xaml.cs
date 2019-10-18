@@ -92,7 +92,7 @@ namespace Problemario1_DataBase
                 }
                 else
                 {
-                    cmd.CommandText = "update Equipos set Nombre='" + txtNombre.Text + "',Juego='" + cbJuego.Text + "',Pais=" + txtPais.Text + ",LdEquipo='" + txtLider.Text + "'where Id=" + txtId.Text;
+                    cmd.CommandText = "update Equipos set Nombre='" + txtNombre.Text + "',Juego='" + cbJuego.Text + "',Pais='" + txtPais.Text + "',LdEquipo='" + txtLider.Text + "'where Id=" + txtId.Text;
                     cmd.ExecuteNonQuery();
                     MostrarDatos();
                     MessageBox.Show("Datos del Equipo Actualizados...");
@@ -111,7 +111,7 @@ namespace Problemario1_DataBase
                 txtNombre.Text = row["Nombre"].ToString();
                 cbJuego.Text = row["Juego"].ToString();
                 txtPais.Text = row["Pais"].ToString();
-                txtLider.Text = row["Lider"].ToString();
+                txtLider.Text = row["LdEquipo"].ToString();
                 txtId.IsEnabled = false;
                 btnNuevo.Content = "Actualizar";
             }
@@ -130,7 +130,7 @@ namespace Problemario1_DataBase
                 if (con.State != ConnectionState.Open)
                     con.Open();
                 cmd.Connection = con;
-                cmd.CommandText = "delete form Equipos where Id=" + row["Id"].ToString();
+                cmd.CommandText = "delete from Equipos where Id=" + row["Id"].ToString();
                 cmd.ExecuteNonQuery();
                 MostrarDatos();
                 MessageBox.Show("Equipos eliminados correctamente...");
